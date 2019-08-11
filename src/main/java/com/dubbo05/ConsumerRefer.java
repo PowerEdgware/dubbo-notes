@@ -7,7 +7,7 @@ import com.dubbo04.HelloService;
 public class ConsumerRefer {
 
 	void readme() {
-		//TODO 基于2.6.4
+		//TODO 基于2.7.2
 		// ReferenceBean
 //		ReferenceConfig
 		//DubboNamespaceHandler
@@ -15,6 +15,7 @@ public class ConsumerRefer {
 		//invoke-->InvokerInvocationHandler
 		//FailoverClusterInvoker
 		//HeaderExchangeHandler 
+		//DubboInvoker
 	}
 	
 	public static void main(String[] args) {

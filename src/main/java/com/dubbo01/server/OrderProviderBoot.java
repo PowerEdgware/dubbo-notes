@@ -1,6 +1,8 @@
 package com.dubbo01.server;
 
-import com.alibaba.dubbo.container.Main;
+import org.apache.dubbo.container.Main;
+
+//import com.alibaba.dubbo.container.Main;
 
 //import org.apache.dubbo.container.Main;
 
