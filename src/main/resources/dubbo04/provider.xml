@@ -13,11 +13,11 @@
 
 	<!-- 用dubbo协议在20880端口暴露服务 -->
 	<!-- 使用netty4 必须引入io.netty 默认用的jboss的netty -->
-	<dubbo:protocol name="dubbo" port="20880" server="netty" />
+	<dubbo:protocol name="dubbo" port="20881" server="netty" />
 
 	<!-- 声明服务接口 -->
 	<dubbo:service interface="com.dubbo04.HelloService"
-		ref="helloSrv" />
+		ref="helloSrv"/>
 
 	<bean id="helloSrv" class="com.dubbo04.HelloServiceImpl"></bean>
 

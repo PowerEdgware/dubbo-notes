@@ -1,7 +1,7 @@
 package com.adaptive.alibaba2_6_4;
 
 //package com.alibaba.dubbo.rpc.cluster;
-import com.alibaba.dubbo.common.extension.ExtensionLoader;
+//import com.alibaba.dubbo.common.extension.ExtensionLoader;
 
 public class Cluster$Adaptive implements com.alibaba.dubbo.rpc.cluster.Cluster {
 	public com.alibaba.dubbo.rpc.Invoker join(com.alibaba.dubbo.rpc.cluster.Directory arg0)

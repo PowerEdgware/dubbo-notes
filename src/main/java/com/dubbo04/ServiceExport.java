@@ -23,7 +23,9 @@ public class ServiceExport {
 	}
 
 	void readme() {
+		//@Service
 //		ServiceBean
+		//JavassistProxyFactory
 		// ExtensionLoader
 		// ServiceConfig
 		// SimpleDataStore
@@ -31,11 +33,14 @@ public class ServiceExport {
 		// DubboProtocol
 		//DubboNamespaceHandler
 		//DubboCodec
-		
+		//DubboProtocol
 		//Server ChannelHandler wrapper
 		//AllChannelHandler extends WrappedChannelHandler
 		//DubboProtocol$1 内部类：requestHandler:DubboProtocol
 		//MultiMessageHandler(HeartbeatHandler(AllChannelHandler(DecodeHandler((HeaderExchangeHandler(DubboProtocol$1()))))))
+		
+		//服务注册
+		//RegistryProtocol
 	}
 
 	public static void main(String[] args) {
