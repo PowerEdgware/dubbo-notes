@@ -7,17 +7,19 @@ import com.dubbo04.HelloService;
 public class ConsumerRefer {
 
 	void readme() {
-		//TODO 基于2.7.2
+		// TODO 基于2.7.2
 		// ReferenceBean
 //		ReferenceConfig
-		//DubboNamespaceHandler
-		//NettyClient
-		//invoke-->InvokerInvocationHandler
-		//FailoverClusterInvoker
-		//HeaderExchangeHandler 
-		//DubboInvoker
+		//RegistryProtocol
+		// DubboNamespaceHandler
+		// NettyClient
+		// invoke-->InvokerInvocationHandler
+		// FailoverClusterInvoker
+		// HeaderExchangeHandler
+		// DubboInvoker
+		//DubboProtocol
 	}
-	
+
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "dubbo05/consumer.xml" });

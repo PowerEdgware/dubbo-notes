@@ -293,11 +293,22 @@ Worker线程池大小可以通关URL key:`iothreads`显示设置，默认大小�
 ```
 
 以zookeeper为例获取注册中心： `ZookeeperRegistryFactory`
-`ZookeeperRegistryFactory extends `
+`ZookeeperRegistryFactory extends AbstractRegistryFactory`
 
+获取的 ZookeeperRegistry 进行注册。
 
+最终会调用：`ZookeeperRegistry#doRegister` 利用curatorClient创建服务节点
 
-
+```
+  @Override
+    public void doRegister(URL url) {
+        try {
+            zkClient.create(toUrlPath(url), url.getParameter(DYNAMIC_KEY, true));
+        } catch (Throwable e) {
+            throw new RpcException("Failed to register " + url + " to zookeeper " + getUrl() + ", cause: " + e.getMessage(), e);
+        }
+    }
+```
 
 
 
