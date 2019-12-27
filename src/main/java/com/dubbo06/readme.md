@@ -75,7 +75,7 @@ b.调用父类`AbstractClusterInvoker#doSelect`方法继续选择，接着调用
 c.从`doSelect`返回以后，如果是粘滞invoker，则设置粘滞invoker为当前选择的invoker` stickyInvoker = invoker;`并从select处返回。  
 d.从select方法返回后，调用目标 Invoker 的 invoke 方法。正常调用则返回调用者，否则进行重试，次数耗尽仍失败，则抛出`RpcException`给上层调用者。   
 
-** 其他的负载均衡容错Invoker**   
+** 其他的集群容错Invoker**   
 
 A.`FailbackClusterInvoker`  
 
