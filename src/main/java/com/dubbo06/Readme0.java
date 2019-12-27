@@ -28,5 +28,9 @@ public class Readme0 {
 		//参数key=serialization。可在配置文件标签：<dubbo:protocol> 中配置 . 获取默认序列化是：hessian2
 		//CodecSupport.getSerialization
 		
+		
+		//TODO 集群
+		//FailoverClusterInvoker
+		
 	}
 }
