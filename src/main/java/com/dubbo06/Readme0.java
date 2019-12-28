@@ -1,5 +1,7 @@
 package com.dubbo06;
 
+import java.lang.reflect.Method;
+
 public class Readme0 {
 
 	void readme() {
@@ -29,8 +31,45 @@ public class Readme0 {
 		//CodecSupport.getSerialization
 		
 		
-		//TODO 集群
+		//TODO 集群容错
 		//FailoverClusterInvoker
 		
+		//TODO 负载均衡
+		
+		//ClassLoader
+		//Class.forName
+		
 	}
+	
+	public static void main(String[] args) throws Exception {
+		
+		boolean equals=ClassLoader.getSystemClassLoader()==Thread.currentThread().getContextClassLoader();
+		System.out.println(equals);
+		ClassLoader appClsLoader=ClassLoader.getSystemClassLoader();
+		String clsName="com.dubbo06.Loader";
+		try {
+			Class<?> cls=Class.forName(clsName, false, appClsLoader);
+			System.out.println(cls.getName());
+			
+			//CLassLoader.loaderClass
+			Class<?> cls2=appClsLoader.loadClass(clsName);
+			System.out.println(cls2==cls);
+			
+			Method mSay=cls2.getDeclaredMethod("sayLoader", null);
+			System.out.println(mSay);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+class Loader{
+	static {
+		System.out.println("LoaderXX");
+	}
+	
+	 void sayLoader() {
+		System.out.println("sayLoader");
+	}
+	
 }
