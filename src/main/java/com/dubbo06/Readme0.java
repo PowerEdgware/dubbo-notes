@@ -36,8 +36,11 @@ public class Readme0 {
 		
 		//TODO 负载均衡
 		
+		//AbstractLoadBalance 
+		
 		//ClassLoader
 		//Class.forName
+		//ConsistentHashLoadBalance
 		
 	}
 	

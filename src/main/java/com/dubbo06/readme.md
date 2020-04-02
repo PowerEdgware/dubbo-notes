@@ -111,6 +111,41 @@ F.`AvailableClusterInvoker`
 等情况。LoadBalance负责把请求均衡的分摊到每个服务提供者。
 
 **Dubbo的几种负载均衡策略**  
+从`AbstractLoadBalance#select`开始：  
+
+```
+    @Override
+    public <T> Invoker<T> select(List<Invoker<T>> invokers, URL url, Invocation invocation) {
+        if (CollectionUtils.isEmpty(invokers)) {
+            return null;
+        }
+        if (invokers.size() == 1) {
+            return invokers.get(0);
+        }
+        return doSelect(invokers, url, invocation);//会调用子类的doSelect方法
+    }
+```
+预热降权：避免让服务在启动之初就处于高负载状态。服务预热是一个优化手段，与此类似的还有 JVM 预热。主要目的是让服务启动后“低功率”运行一段时间，使其效率慢慢提升至最佳状态。   
+
+*默认的负载均衡策略*：A.`RandomLoadBalance`  
+>加权随机算法:权重值类比区间，所有权重加起来构成一个区间，每次使用随机算法获取一个在[0,totalWeight)里的随机数rnd，权重越大则rnd落在其区间的概率也越大，这种方式简单高效。
+
+*最小活跃数负载均衡*：B.`LeastActiveLoadBalance`  
+> 活跃调用数越小，说明服务提供者效率越高，单位时间内能够处理更多的请求，所以优先把请求分配给该服务。具体实现：调用请求时，活跃数+1，完成请求活跃数-1。dubbo的实现
+>中加入了权重的值，某一个时刻，两个最小活跃数相同的服务提供者，会根据权重分配请求，权重大被分配给消费者进行调用的概率就越大。权重相同，则随机选取一个即可。
+
+大致步骤如下：  
+a.历 invokers 列表，寻找活跃数最小的 Invoker；  
+b.如果有多个 Invoker 具有相同的最小活跃数，此时记录下这些 Invoker 在 invokers 集合中的下标，并累加它们的权重，比较它们的权重值是否相等；  
+c.如果只有一个 Invoker 具有最小的活跃数，此时直接返回该 Invoker；  
+d.如果有多个 Invoker 具有最小活跃数，且它们的权重不相等，此时处理方式和 RandomLoadBalance 一致；  
+e.否则随机选择一个invoker返回。  
+
+*一致性hash负载均衡*：C.`ConsistentHashLoadBalance`  
+>
+
+
+
 
 
 ---
