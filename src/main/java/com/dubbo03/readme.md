@@ -46,6 +46,12 @@ type接口必须具备：SPI注解
  `injectExtension((T) getAdaptiveExtensionClass().newInstance())`  
  自适应扩展点实例不会被包装
  
+ note:一个type接口既没有类级别Adaptive也灭有方法级别Adaptive，则获取自适应扩展点会报错。
+ 
+ ```
+ No adaptive method exist on extension com.custome.IFilter, refuse to create the adaptive class!
+ 
+ ```
  ** 激活扩展点**   
  使用的注解：`@Activate` 根据条件激活指定的扩展点
  
