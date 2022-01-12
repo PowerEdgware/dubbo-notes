@@ -8,7 +8,7 @@
 
 	<properties>
 		<ali.dubbo.version>2.6.4</ali.dubbo.version>
-		<apache.dubbo.version>2.7.2</apache.dubbo.version>
+		<apache.dubbo.version>2.7.15</apache.dubbo.version>
 	</properties>
 	<dependencies>
 
